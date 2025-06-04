@@ -1,14 +1,9 @@
 import express from "express";
 import { Liquid } from "liquidjs";
-import methodOverride from "method-override"; // Importeer de "method-override" module, die het mogelijk maakt om HTTP-methoden te gebruiken
 
 // Express
 const app = express();
-app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
-
-// Method Override
-app.use(methodOverride("_method"));
 
 // Liquid
 const engine = new Liquid();
@@ -16,6 +11,7 @@ app.engine("liquid", engine.express());
 
 // Views
 app.set("views", "./views");
+app.use(express.urlencoded({extended: true}))
 
 const PokeAppUrl = "https://pokeapi.co/api/v2/pokemon/ditto";
 
@@ -28,13 +24,9 @@ app.get("/", async function (req, res) {
 
 
 
-
-
 // Port
-app.set("port", process.env.PORT || 8000);
+app.set('port', process.env.PORT || 8000)
 
-app.listen(app.get("port"), function () {
-  console.log(`http://localhost:${app.get("port")}`);
-});
-
-console.log('Hier komt je server voor Sprint 12.')
+app.listen(app.get('port'), function () {
+  console.log(`Application started on http://localhost:${app.get('port')}`)
+})
