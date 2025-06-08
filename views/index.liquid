@@ -4,3 +4,9 @@
 <h1>All pokemon</h1>
 
 <input type="search" placeholder="search">
+
+{% for pokemon in pokemon.results %}
+    <li>
+      <a href="/{{ pokemon.name }}">{{ pokemon.name | capitalize }}</a>
+    </li>
+  {% endfor %}

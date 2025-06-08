@@ -13,13 +13,24 @@ app.engine("liquid", engine.express());
 app.set("views", "./views");
 app.use(express.urlencoded({extended: true}))
 
-const PokeAppUrl = "https://pokeapi.co/api/v2/pokemon/ditto";
+const pokeApi = "https://pokeapi.co/api/v2/";
 
 app.get("/", async function (req, res) {
-    // req + res plss T-T
-    // Filter de content op gewenste keys
+
+    // Alle pokemon, laden gelimiteerd tot 15 per keer
+    const pokeResponse = await fetch(`${pokeApi}/pokemon?limit=15`)
+    const pokeResponseJSON = await pokeResponse.json()
+
+    // Pokemon details
+    const pokemonResponse = await fetch(pokeApi);
+    const pokemonResponseJSON = await pokemonResponse.json();
+    pokemon.data = pokemonResponseJSON;
   
-    res.render("index.liquid");
+    res.render("index.liquid", {
+        pokemon: pokeResponseJSON,
+        pokemonDetail: pokemonResponseJSON,
+    });
+
 });
 
 
