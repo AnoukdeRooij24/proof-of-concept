@@ -17,16 +17,17 @@ const pokeApi = "https://pokeapi.co/api/v2/";
 
 app.get("/", async function (req, res) {
 
-    // Alle pokemon, laden gelimiteerd tot 15 per keer
+    // alle pokemon, laden gelimiteerd tot 15 per keer
     const pokeResponse = await fetch(`${pokeApi}/pokemon?limit=150`)
     const pokeResponseJSON = await pokeResponse.json()
 
-    // pokemon met Sprites 
+    // van alle pokemon die hierboven aangeroepen zijn de Sprites (afbeeldingen) ophalen 
     const pokeSprites = await Promise.all(
         pokeResponseJSON.results.map(async (pokemon) => {
             const PokeDetailsResponse = await fetch(pokemon.url)
             const PokeDetails = await PokeDetailsResponse.json()
 
+            // het terug laten geven van de naam en sprite
             return {
                 name: PokeDetails.name,
                 sprite: PokeDetails.sprites.other.dream_world.front_default,
@@ -35,23 +36,39 @@ app.get("/", async function (req, res) {
     )
   
     res.render("index.liquid", {
-        pokemon: pokeResponseJSON,
         pokemonDetail: pokeSprites,
     });
 
 });
 
-app.get("/pokemon/:id", async function (req, res) {
-    const id = req.params.id;
+app.get("/:name", async function (req, res)  {
+    const name = req.params.name.toLowerCase();
+    // .toLowerCase() achter zetten, database kan gevoelig zijn voor hoofdletters en dit kan fouten opleveren
 
-    const detailResponse = await fetch(`${pokeApi}/pokemon/${id}`);
-    const detailResponseJSON = await detailResponse.json();
+    try {
+        // op basis van de naam de data ophalen van de pokemon
+        const detailResponse = await fetch(`${pokeApi}/pokemon/${name}`);
+        const detailData = await detailResponse.json();
 
-    res.render("detail.liquid", {
-        pokemonDetail: detailResponseJSON,
-    });
+        res.render("detail.liquid", {
+            detailsOfPokemon: {
+                name: detailData.name,
+                sprite: detailData.sprites.front_default,
+                height: detailData.height,
+                weight: detailData.weight,
+                types: detailData.types.map(t => t.type.name),
+                abilities: detailData.abilities.map(a => a.ability.name),
+                audio: detailData.cries?.latest || null
+            }
+        })
+        
+    } 
+
+    // als de pokemon niet gevonden is of er een foutmelding is komt er een 404
+    catch (error) {
+        res.status(404).send('Pokémon not found')
+    }
 })
-
 
 // Port
 app.set('port', process.env.PORT || 8000)
