@@ -18,21 +18,39 @@ const pokeApi = "https://pokeapi.co/api/v2/";
 app.get("/", async function (req, res) {
 
     // Alle pokemon, laden gelimiteerd tot 15 per keer
-    const pokeResponse = await fetch(`${pokeApi}/pokemon?limit=15`)
+    const pokeResponse = await fetch(`${pokeApi}/pokemon?limit=150`)
     const pokeResponseJSON = await pokeResponse.json()
 
-    // Pokemon details
-    const pokemonResponse = await fetch(pokeApi);
-    const pokemonResponseJSON = await pokemonResponse.json();
-    pokemon.data = pokemonResponseJSON;
+    // pokemon met Sprites 
+    const pokeSprites = await Promise.all(
+        pokeResponseJSON.results.map(async (pokemon) => {
+            const PokeDetailsResponse = await fetch(pokemon.url)
+            const PokeDetails = await PokeDetailsResponse.json()
+
+            return {
+                name: PokeDetails.name,
+                sprite: PokeDetails.sprites.other.dream_world.front_default,
+            }
+        })
+    )
   
     res.render("index.liquid", {
         pokemon: pokeResponseJSON,
-        pokemonDetail: pokemonResponseJSON,
+        pokemonDetail: pokeSprites,
     });
 
 });
 
+app.get("/pokemon/:id", async function (req, res) {
+    const id = req.params.id;
+
+    const detailResponse = await fetch(`${pokeApi}/pokemon/${id}`);
+    const detailResponseJSON = await detailResponse.json();
+
+    res.render("detail.liquid", {
+        pokemonDetail: detailResponseJSON,
+    });
+})
 
 
 // Port
