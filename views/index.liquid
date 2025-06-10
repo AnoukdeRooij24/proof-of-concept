@@ -1,12 +1,11 @@
-{% include "partials/header.liquid" %}
-
+{% render "partials/header.liquid" %}
 
 <h1>All pokemon</h1>
 
 <form method="get" action="" class="">
     <input type="search" placeholder="Search">
     <button class="">
-        <img class="" src="" width="25" height="25" alt="start searching">
+        <img class="" src="/assets/Search.svg" width="25" height="25" alt="start searching">
     </button>
 </form>
 
@@ -16,3 +15,5 @@
       <img src="{{ pokemon.sprite }}" height="100" width="100" alt="{{ pokemon.name }}" >
     </li>
 {% endfor %}
+
+{% render "partials/footer.liquid" %}
