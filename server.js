@@ -52,16 +52,24 @@ app.get("/:name", async function (req, res)  {
 
         res.render("detail.liquid", {
             detailsOfPokemon: {
+                // about
                 name: detailData.name,
+                id: detailData.id,
+                xp: detailData.base_experience,
                 sprite: detailData.sprites.front_default,
                 height: detailData.height,
                 weight: detailData.weight,
                 types: detailData.types.map(t => t.type.name),
                 abilities: detailData.abilities.map(a => a.ability.name),
-                audio: detailData.cries?.latest || null
+                // states
+                hp: detailData.stats[0].base_stat,
+                attack: detailData.stats[1].base_stat,
+                defense: detailData.stats[2].base_stat,
+                specialAttack: detailData.stats[3].base_stat,
+                specialDefense: detailData.stats[4].base_stat,
+                speed: detailData.stats[5].base_stat,
             }
         })
-        
     } 
 
     // als de pokemon niet gevonden is of er een foutmelding is komt er een 404
