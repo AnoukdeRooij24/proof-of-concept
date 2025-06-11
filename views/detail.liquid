@@ -1,77 +1,83 @@
 {% render "partials/header.liquid" %}
 
-<h1>{{ detailsOfPokemon.name | capitalize }}</h1>
-<h2> {{ detailsOfPokemon.id }} </h2>
-<img src="{{ detailsOfPokemon.sprite }}" height="100" width="100" alt="picture {{ pokemon.name }}" >
+<header>
+    <a href="/"><img src="/assets/PokemonLogo.svg"></a> 
+    <h1>{{ detailsOfPokemon.name | capitalize }}</h1>
 
+    <h2> {{ detailsOfPokemon.id }} </h2>
+    <img src="{{ detailsOfPokemon.sprite }}" height="100" width="100" alt="picture {{ pokemon.name }}" >
+</header>
 
-<section class="about">
-    <h2>About</h2>
-    <tbody>
-        <tr>
-            <td>Name</td>
-            <td> {{ detailsOfPokemon.name | capitalize }} </td>
-        </tr>
-        <tr>
-            <td>ID</td>
-            <td> {{ detailsOfPokemon.id | capitalize }} </td>
-        </tr>
-        <tr>
-            <td>Base XP</td>
-            <td> {{ detailsOfPokemon.xp | capitalize }} </td>
-        </tr>
-        <tr>
-            <td>Weight</td>
-            <td> {{ detailsOfPokemon.weight | capitalize }} </td>
-        </tr>
-        <tr>
-            <td>Height</td>
-            <td> {{ detailsOfPokemon.height | capitalize }} </td>
-        </tr>
-        <tr>
-            <td>Type</td>
-            <td> {{ detailsOfPokemon.types | capitalize }} </td>
-        </tr>
-        <tr>
-            <td>Abilities</td>
-            <td> {{ detailsOfPokemon.abilities | capitalize }} </td>
-        </tr>
-    </tbody>
+<main>
+    <section class="about">
+        <h2>About</h2>
+        <tbody>
+            <tr>
+                <td>Name</td>
+                <td> {{ detailsOfPokemon.name | capitalize }} </td>
+            </tr>
+            <tr>
+                <td>ID</td>
+                <td> {{ detailsOfPokemon.id | capitalize }} </td>
+            </tr>
+            <tr>
+                <td>Base XP</td>
+                <td> {{ detailsOfPokemon.xp | capitalize }} </td>
+            </tr>
+            <tr>
+                <td>Weight</td>
+                <td> {{ detailsOfPokemon.weight | capitalize }} </td>
+            </tr>
+            <tr>
+                <td>Height</td>
+                <td> {{ detailsOfPokemon.height | capitalize }} </td>
+            </tr>
+            <tr>
+                <td>Type</td>
+                <td> {{ detailsOfPokemon.types | capitalize }} </td>
+            </tr>
+            <tr>
+                <td>Abilities</td>
+                <td> {{ detailsOfPokemon.abilities | capitalize }} </td>
+            </tr>
+        </tbody>
 
-</section>
+    </section>
 
-<section class="stats">
-    <h2>Stats</h2>
-    <tbody>
-        <tr>
-            <td>HP</td>
-            <td> {{ detailsOfPokemon.hp | capitalize }} </td>
-        </tr>
-        <tr>
-            <td>Attack</td>
-            <td> {{ detailsOfPokemon.attack | capitalize }} </td>
-        </tr>
-        <tr>
-            <td>Defence</td>
-            <td> {{ detailsOfPokemon.defence | capitalize }} </td>
-        </tr>
-        <tr>
-            <td>Special attack</td>
-            <td> {{ detailsOfPokemon.specialAttack | capitalize }} </td>
-        </tr>
-        <tr>
-            <td>Special defence</td>
-            <td> {{ detailsOfPokemon.specialDefence | capitalize }} </td>
-        </tr>
-        <tr>
-            <td>Speed</td>
-            <td> {{ detailsOfPokemon.Speed | capitalize }} </td>
-        </tr>
-    </tbody>
-</section>
+    <section class="stats">
+        <h2>Stats</h2>
+        <tbody>
+            <tr>
+                <td>HP</td>
+                <td> {{ detailsOfPokemon.hp | capitalize }} </td>
+            </tr>
+            <tr>
+                <td>Attack</td>
+                <td> {{ detailsOfPokemon.attack | capitalize }} </td>
+            </tr>
+            <tr>
+                <td>Defence</td>
+                <td> {{ detailsOfPokemon.defence | capitalize }} </td>
+            </tr>
+            <tr>
+                <td>Special attack</td>
+                <td> {{ detailsOfPokemon.specialAttack | capitalize }} </td>
+            </tr>
+            <tr>
+                <td>Special defence</td>
+                <td> {{ detailsOfPokemon.specialDefence | capitalize }} </td>
+            </tr>
+            <tr>
+                <td>Speed</td>
+                <td> {{ detailsOfPokemon.Speed | capitalize }} </td>
+            </tr>
+        </tbody>
+    </section>
 
-<section class="evolutions">
-    <h2>Evolutions</h2>
-</section>
+    <section class="evolutions">
+        <h2>Evolutions</h2>
+    </section>
+
+</main>
 
 {% render "partials/footer.liquid" %}
