@@ -1,6 +1,9 @@
 {% render "partials/header.liquid" %}
 
 <h1>{{ detailsOfPokemon.name | capitalize }}</h1>
+<h2> {{ detailsOfPokemon.id }} </h2>
+<img src="{{ detailsOfPokemon.sprite }}" height="100" width="100" alt="picture {{ pokemon.name }}" >
+
 
 <section class="about">
     <h2>About</h2>
@@ -39,7 +42,6 @@
 
 <section class="stats">
     <h2>Stats</h2>
-
     <tbody>
         <tr>
             <td>HP</td>

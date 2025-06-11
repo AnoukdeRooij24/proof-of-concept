@@ -18,7 +18,7 @@ const pokeApi = "https://pokeapi.co/api/v2/";
 app.get("/", async function (req, res) {
 
     // alle pokemon, laden gelimiteerd tot 15 per keer
-    const pokeResponse = await fetch(`${pokeApi}/pokemon?limit=150`)
+    const pokeResponse = await fetch(`${pokeApi}/pokemon?limit=151`)
     const pokeResponseJSON = await pokeResponse.json()
 
     // van alle pokemon die hierboven aangeroepen zijn de Sprites (afbeeldingen) ophalen 
@@ -34,6 +34,8 @@ app.get("/", async function (req, res) {
             }
         })
     )
+
+    // console.log(pokeSprites);
   
     res.render("index.liquid", {
         pokemonDetail: pokeSprites,
@@ -56,7 +58,7 @@ app.get("/:name", async function (req, res)  {
                 name: detailData.name,
                 id: detailData.id,
                 xp: detailData.base_experience,
-                sprite: detailData.sprites.front_default,
+                sprite: detailData.sprites.other.dream_world.front_default,
                 height: detailData.height,
                 weight: detailData.weight,
                 types: detailData.types.map(t => t.type.name),
