@@ -1,33 +1,37 @@
 {% render "partials/head.liquid" %}
 
 <header>
-    <a href="/"><img src="/assets/PokemonLogo.svg"></a> 
+    <a href="/"><img src="/assets/PokemonLogo.svg" class="poke-logo" width="300px"></a> 
     <h1>All Pokémon</h1>
 
-    <form method="get" action="" class="">
+    <form method="get" action="" class="search-bar">
         <input type="search" placeholder="Search">
-        <button class="">
+        <button class="search-button">
             <img class="" src="/assets/Search.svg" width="25" height="25" alt="start searching">
         </button>
     </form>
 
     <label>
+        <img src="/assets/allPokemon.svg" width="25" height="25" alt="">
         All Pokemon
         <input type="radio" name="display" checked>
     </label>
 
     <label>
+        <img src="/assets/caughtPokemon.svg" width="25" height="25" alt="">
         Caught Pokemon
         <input type="radio" name="display">
     </label>
 </header>
 
-<main>
-    {% for pokemon in pokemonDetail %}
-        <li>
-        <a href="/{{ pokemon.name }}">{{ pokemon.name | capitalize }}</a>
-        <img src="{{ pokemon.sprite }}" height="100" width="100" alt="{{ pokemon.name }}" >
-        </li>
-    {% endfor %}
+<main class="main-index">
+    <ul class="poke-grid">
+        {% for pokemon in pokemonDetail %}
+            <li>
+                <a href="/{{ pokemon.name }}">{{ pokemon.name | capitalize }}</a>
+                <img src="{{ pokemon.sprite }}" height="75" width="75" alt="{{ pokemon.name }}" >
+            </li>
+        {% endfor %}
+    </ul>
 </main>
-{% render "partials/footer.liquid" %}
+<!-- {% render "partials/footer.liquid" %} -->

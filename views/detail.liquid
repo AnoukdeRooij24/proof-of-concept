@@ -1,7 +1,7 @@
 {% render "partials/head.liquid" %}
 
 <header>
-    <a href="/"><img src="/assets/PokemonLogo.svg"></a> 
+    <a href="/"><img src="/assets/PokemonLogo.svg" class="poke-logo" width="300px"></a> 
     <h1>{{ detailsOfPokemon.name | capitalize }}</h1>
 
     <h2> {{ detailsOfPokemon.id }} </h2>
@@ -80,4 +80,4 @@
 
 </main>
 
-{% render "partials/footer.liquid" %}
+<!-- {% render "partials/footer.liquid" %} -->
