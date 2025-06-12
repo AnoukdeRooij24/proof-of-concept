@@ -5,7 +5,7 @@
 }
 
 body {
-    /* colors */
+    /* MARK: colors */
     --color-pokemon-type-grass: rgb(190, 226, 183);
     --color-pokemon-type-normal: rgb(189, 189, 189);
     --color-pokemon-type-fire: rgb(255, 179, 190);
@@ -29,10 +29,10 @@ body {
     --color-primary-daylight: rgb(246, 246, 255);
     --color-primary-purple: rgb(86, 49, 232);
 
-    /* text sizes */
+    /* MARK: text sizes */
     /* mobile */
     --font-size-1: 2em;
-    --font-size-2-mobile: 1em;
+    --font-size-2-mobile: 1.2em;
     --font-size-p-mobile: 1em;
 
     /* desktop */
@@ -40,7 +40,7 @@ body {
     --font-size-p-desktop: 2em;
 }
 
-/* font face */
+/* MARK: font */
 @font-face {
     font-family: 'Rubik' ;
     src: url(/font/Rubik/static/Rubik-Medium.ttf);

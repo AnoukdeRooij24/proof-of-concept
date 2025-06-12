@@ -4,78 +4,63 @@
     <a href="/"><img src="/assets/PokemonLogo.svg" class="poke-logo" width="300px"></a> 
     <h1>{{ detailsOfPokemon.name | capitalize }}</h1>
 
-    <h2> {{ detailsOfPokemon.id }} </h2>
+    <h2> {{ detailsOfPokemon.id | prepend: '000' | slice: -3, 3 }} </h2>
     <img src="{{ detailsOfPokemon.sprite }}" height="100" width="100" alt="picture {{ pokemon.name }}" >
 </header>
 
 <main>
     <section class="about">
-        <h2>About</h2>
-        <tbody>
-            <tr>
-                <td>Name</td>
-                <td> {{ detailsOfPokemon.name | capitalize }} </td>
-            </tr>
-            <tr>
-                <td>ID</td>
-                <td> {{ detailsOfPokemon.id | capitalize }} </td>
-            </tr>
-            <tr>
-                <td>Base XP</td>
-                <td> {{ detailsOfPokemon.xp | capitalize }} </td>
-            </tr>
-            <tr>
-                <td>Weight</td>
-                <td> {{ detailsOfPokemon.weight | capitalize }} </td>
-            </tr>
-            <tr>
-                <td>Height</td>
-                <td> {{ detailsOfPokemon.height | capitalize }} </td>
-            </tr>
-            <tr>
-                <td>Type</td>
-                <td> {{ detailsOfPokemon.types | capitalize }} </td>
-            </tr>
-            <tr>
-                <td>Abilities</td>
-                <td> {{ detailsOfPokemon.abilities | capitalize }} </td>
-            </tr>
-        </tbody>
+        <h2 class="tab-h2">About</h2>
+        <dl class="details-grid">
+            <dt>Name</dt>
+            <dd> {{ detailsOfPokemon.name | capitalize }} </dd>
+
+            <dt>ID</dt>
+            <dd> {{ detailsOfPokemon.id }} </dd>
+
+            <dt>Base XP</dt>
+            <dd> {{ detailsOfPokemon.xp }} </dd>
+
+            <dt>Weight</dt>
+            <dd> {{ detailsOfPokemon.weight }} </dd>
+
+            <dt>Height</td>
+            <dd> {{ detailsOfPokemon.height }} </dd>
+
+            <dt>Type</dt>
+            <dd> {{ detailsOfPokemon.types | capitalize }} </td>
+
+            <dt>Abilities</dt>
+            <dd> {{ detailsOfPokemon.abilities | capitalize }} </td>
+        </dl>
 
     </section>
 
     <section class="stats">
-        <h2>Stats</h2>
-        <tbody>
-            <tr>
-                <td>HP</td>
-                <td> {{ detailsOfPokemon.hp | capitalize }} </td>
-            </tr>
-            <tr>
-                <td>Attack</td>
-                <td> {{ detailsOfPokemon.attack | capitalize }} </td>
-            </tr>
-            <tr>
-                <td>Defence</td>
-                <td> {{ detailsOfPokemon.defence | capitalize }} </td>
-            </tr>
-            <tr>
-                <td>Special attack</td>
-                <td> {{ detailsOfPokemon.specialAttack | capitalize }} </td>
-            </tr>
-            <tr>
-                <td>Special defence</td>
-                <td> {{ detailsOfPokemon.specialDefence | capitalize }} </td>
-            </tr>
-            <tr>
-                <td>Speed</td>
-                <td> {{ detailsOfPokemon.Speed | capitalize }} </td>
-            </tr>
-        </tbody>
+        <h2 class="tab-h2">Stats</h2>
+        <dl class="details-grid">
+            <dt>HP</dt>
+            <dd> {{ detailsOfPokemon.hp }} </dd>
+
+            <dt>Attack</dt>
+            <dd> {{ detailsOfPokemon.attack }} </dd>
+
+            <dt>Defence</dt>
+            <dd> {{ detailsOfPokemon.defence }} </dd>
+
+            <dt>Special attack</dt>
+            <dd> {{ detailsOfPokemon.specialAttack }} </dd>
+
+            <dt>Special defence</dt>
+            <dd> {{ detailsOfPokemon.specialDefence }} </dd>
+
+            <dt>Speed</dt>
+            <dd> {{ detailsOfPokemon.Speed }} </dd>
+        </dl>
     </section>
 
     <section class="evolutions">
-        <h2>Evolutions</h2>
+        <h2 class="tab-h2">Evolutions</h2>
     </section>
 
 </main>

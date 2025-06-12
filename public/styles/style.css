@@ -23,12 +23,12 @@ header {
 .search-bar {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1em;
     width: 100%;
     max-width: 400px;
     height: 3rem;
     padding: 1em;
-    border-radius: 1rem;
+    border-radius: 1em;
     background-color: var(--color-primary-daylight);
 }
 
@@ -40,12 +40,12 @@ input[type="radio"] {
 label:has(input[type="radio"]) {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1em;
     width: 100%;
     max-width: 400px;
-    height: 3rem;
+    height: 3em;
     padding: 1em;
-    border-radius: 1rem;
+    border-radius: 1em;
     background-color: var(--color-primary-daylight);
 }
 
@@ -87,6 +87,40 @@ li {
     }
 }
 
-
-
 /* MARK: main detail */
+.tab-h2 {
+    margin-left: 1em;
+}
+
+/* details info */
+.details-grid {
+        display: grid;
+        grid-template-columns: fit-content 1fr;
+        padding: 1.5em;
+}
+
+dt {
+    line-height: 2.5;
+    padding-inline: 1em;
+    grid-column: 1 / 2;
+    border-radius: 1em 0 0 1em;
+    font-weight: 600;
+
+    &:nth-of-type(odd) {
+        background-color: pink;
+    }
+}
+
+dd {
+    line-height: 2.5;
+    padding-inline: 1em;
+    grid-column: 2 / 3;
+    justify-self: end;
+    text-align: end;
+    width: 100%;
+    border-radius: 0 1em 1em 0;
+
+    &:nth-of-type(odd) {
+        background-color: pink; 
+    }
+}
