@@ -1,7 +1,7 @@
 body {
     font-family: 'Rubik', Verdana, sans-serif;
 
-    /* @media (width > 750px) {
+    /* @media (width > 800px) {
         display: flex;
     } */
 }
@@ -64,6 +64,10 @@ label:has(input[type="radio"]:checked) {
     grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr));
     gap: .5em;
     padding: .5em;
+
+    /* @media (width > 800px) {
+        grid-template-columns: repeat(auto-fill, minmax(min(170px, 100%), 1fr, 1fr, 1fr));
+    } */
 }
 
 li {
@@ -124,3 +128,8 @@ dd {
         background-color: pink; 
     }
 }
+
+/* MARK: view transition */
+/* @view-transition {
+    navigation: auto;
+} */
