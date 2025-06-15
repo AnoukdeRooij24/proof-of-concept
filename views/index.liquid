@@ -27,10 +27,10 @@
 <main class="main-index">
     <ul class="poke-grid">
         {% for pokemon in pokemonDetail %}
-            <li>
-                <a href="/{{ pokemon.name }}">{{ pokemon.name | capitalize }}</a>
+            <a class="poke-link" href="/{{ pokemon.name }}">
+                {{ pokemon.name | capitalize }}
                 <img src="{{ pokemon.sprite }}" height="75" width="75" alt="{{ pokemon.name }}" >
-            </li>
+            </a>
         {% endfor %}
     </ul>
 </main>

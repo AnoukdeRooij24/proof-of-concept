@@ -70,10 +70,10 @@ label:has(input[type="radio"]:checked) {
     } */
 }
 
-li {
+.poke-link {
     list-style: none;
     width: 170px;
-    height: 120px;
+    height: 140px;
     padding: 1em;
     border-radius: 1em ;
     position: relative;
