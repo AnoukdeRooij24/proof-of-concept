@@ -1,9 +1,9 @@
 body {
     font-family: 'Rubik', Verdana, sans-serif;
 
-    /* @media (width > 800px) {
+    @media (width > 800px) {
         display: flex;
-    } */
+    }
 }
 
 /* MARK: header */
@@ -69,14 +69,24 @@ label:has(input[type="radio"]:checked) {
 }
 
 .poke-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr));
+    /* display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr)); */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: .5em;
     padding: .5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 
-    /* @media (width > 800px) {
-        grid-template-columns: repeat(auto-fill, minmax(min(170px, 100%), 1fr, 1fr, 1fr));
-    } */
+    @media (width > 800px) {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        /* grid-template-columns: repeat(auto-fill, minmax(min(170px, 100%), 1fr, 1fr, 1fr)); */
+    }
 }
 
 .poke-link {
@@ -92,13 +102,29 @@ label:has(input[type="radio"]:checked) {
         color: var(--color-primary-purple);
     }
 
-    img {
-        max-height: 100%;
-        object-fit: contain;
-        float: right;
-        margin: .3em;
+    @media (width > 800px) {
+        width: 265px;
+        height: 220px;    
+        /* transition: .2s; */
     }
 }
+
+.poke-sprite-home {
+    max-height: 100%;
+    object-fit: contain;
+    float: right;
+    margin: .3em;
+    height: 80px;
+    width:80px;
+
+
+    @media (width > 800px) {
+        height: 130px;
+        width: 130px;   
+        /* transition: .2s;  */
+    }
+}
+
 
 /* MARK: main detail */
 .tab-h2 {
@@ -106,6 +132,18 @@ label:has(input[type="radio"]:checked) {
 }
 
 /* details info */
+.poke-sprite-detail {
+    height: 130px;
+    width: 130px;
+
+    @media (width > 800px) {
+        width: 250px;
+        height: 250px;   
+        transition: .2s; 
+    }
+
+}
+
 .details-grid {
         display: grid;
         grid-template-columns: fit-content 1fr;
@@ -139,6 +177,6 @@ dd {
 }
 
 /* MARK: view transition */
-/* @view-transition {
+@view-transition {
     navigation: auto;
-} */
+}

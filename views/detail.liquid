@@ -6,7 +6,7 @@
     <h1>{{ detailsOfPokemon.name | capitalize }}</h1>
 
     <h2> {{ detailsOfPokemon.id | prepend: '000' | slice: -3, 3 }} </h2>
-    <img src="{{ detailsOfPokemon.sprite }}" height="100" width="100" alt="picture {{ pokemon.name }}" >
+    <img class="poke-sprite-detail" src="{{ detailsOfPokemon.sprite }}" height="100" width="100" alt="picture {{ pokemon.name }}" >
 </header>
 
 <main>

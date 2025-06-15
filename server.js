@@ -18,7 +18,7 @@ const pokeApi = "https://pokeapi.co/api/v2/";
 app.get("/", async function (req, res) {
 
     // alle pokemon, laden gelimiteerd tot 15 per keer
-    const pokeResponse = await fetch(`${pokeApi}/pokemon?limit=15`)
+    const pokeResponse = await fetch(`${pokeApi}/pokemon?limit=12`)
     const pokeResponseJSON = await pokeResponse.json()
 
     // van alle pokemon die hierboven aangeroepen zijn de Sprites (afbeeldingen) ophalen 

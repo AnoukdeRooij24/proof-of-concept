@@ -29,7 +29,7 @@
         {% for pokemon in pokemonDetail %}
             <a class="poke-link" href="/{{ pokemon.name }}">
                 {{ pokemon.name | capitalize }}
-                <img src="{{ pokemon.sprite }}" height="75" width="75" alt="{{ pokemon.name }}" >
+                <img class="poke-sprite-home" src="{{ pokemon.sprite }}" height="75" width="75" alt="{{ pokemon.name }}" >
             </a>
         {% endfor %}
     </ul>
