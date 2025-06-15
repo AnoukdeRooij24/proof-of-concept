@@ -19,19 +19,19 @@
             <dd> {{ detailsOfPokemon.id }} </dd>
 
             <dt>Base XP</dt>
-            <dd> {{ detailsOfPokemon.xp }} </dd>
+            <dd> {{ detailsOfPokemon.xp }} xp </dd>
 
             <dt>Weight</dt>
-            <dd> {{ detailsOfPokemon.weight }} </dd>
+            <dd> {{ detailsOfPokemon.weight }} g </dd>
 
             <dt>Height</td>
-            <dd> {{ detailsOfPokemon.height }} </dd>
+            <dd> {{ detailsOfPokemon.height }} cm </dd>
 
             <dt>Type</dt>
-            <dd> {{ detailsOfPokemon.types | capitalize }} </td>
+            <dd> {{ detailsOfPokemon.types | join: " & " | capitalize }} </dd>
 
             <dt>Abilities</dt>
-            <dd> {{ detailsOfPokemon.abilities | capitalize }} </td>
+            <dd> {{ detailsOfPokemon.abilities | join: " & " |  capitalize }} </dd>
         </dl>
 
     </section>
