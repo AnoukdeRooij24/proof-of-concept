@@ -54,6 +54,15 @@ label:has(input[type="radio"]:checked) {
     color: #ffff;
 }
 
+.back-button {
+    width: fit-content;
+    padding: .5em;
+    border-radius: 1em;
+    background-color: var(--color-primary-purple);
+    color: #ffff;
+    font-size: var(--font-size-p-mobile);
+}
+
 /* MARK: main index */
 .main-index {
     background-color: var(--color-primary-daylight);
