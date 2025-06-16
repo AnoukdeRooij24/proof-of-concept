@@ -13,19 +13,22 @@ app.engine("liquid", engine.express());
 app.set("views", "./views");
 app.use(express.urlencoded({extended: true}))
 
+// Base api link
 const pokeApi = "https://pokeapi.co/api/v2/";
 
+// MARK: home
 app.get("/", async function (req, res) {
 
-    // alle pokemon, laden gelimiteerd tot 15 per keer
+    // alle pokemon, laden gelimiteerd tot 12 per keer
     const pokeResponse = await fetch(`${pokeApi}/pokemon?limit=12`)
     const pokeResponseJSON = await pokeResponse.json()
 
     // van alle pokemon die hierboven aangeroepen zijn de Sprites (afbeeldingen) ophalen 
+    // wacht tot alles is opgehaald en rendert alles tegelijk liquid in
     const pokeSprites = await Promise.all(
         pokeResponseJSON.results.map(async (pokemon) => {
             const PokeDetailsResponse = await fetch(pokemon.url)
-            console.log(pokemon.url)
+            // console.log(pokemon.url)
             const PokeDetails = await PokeDetailsResponse.json()
 
             // het terug laten geven van de naam en sprite
@@ -44,6 +47,7 @@ app.get("/", async function (req, res) {
 
 });
 
+// MARK: detail
 app.get("/:name", async function (req, res)  {
     const name = req.params.name.toLowerCase();
     // .toLowerCase() achter zetten, database kan gevoelig zijn voor hoofdletters en dit kan fouten opleveren
@@ -81,7 +85,7 @@ app.get("/:name", async function (req, res)  {
     }
 })
 
-// Port
+// MARK: port
 app.set('port', process.env.PORT || 8000)
 
 app.listen(app.get('port'), function () {
