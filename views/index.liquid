@@ -25,13 +25,13 @@
 </header>
 
 <main class="main-index">
-    <ul class="poke-grid">
+    <div class="poke-grid">
         {% for pokemon in pokemonDetail %}
             <a class="poke-link" href="/{{ pokemon.name }}">
                 {{ pokemon.name | capitalize }}
                 <img class="poke-sprite-home" src="{{ pokemon.sprite }}" height="75" width="75" alt="{{ pokemon.name }}" >
             </a>
         {% endfor %}
-    </ul>
+    </div>
 </main>
 <!-- {% render "partials/footer.liquid" %} -->

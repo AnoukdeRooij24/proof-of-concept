@@ -63,9 +63,10 @@ label:has(input[type="radio"]:checked) {
     font-size: var(--font-size-p-mobile);
 }
 
-/* MARK: main index */
+/* MARK: index */
 .main-index {
     background-color: var(--color-primary-daylight);
+    height: 100%;
 }
 
 .poke-grid {
@@ -126,7 +127,7 @@ label:has(input[type="radio"]:checked) {
 }
 
 
-/* MARK: main detail */
+/* MARK: detail */
 .tab-h2 {
     margin-left: 1em;
 }
@@ -148,6 +149,11 @@ label:has(input[type="radio"]:checked) {
         display: grid;
         grid-template-columns: fit-content 1fr;
         padding: 1.5em;
+}
+
+.main-detail {
+    width: 80%;
+    margin-top: 1em;
 }
 
 dt {

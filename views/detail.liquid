@@ -9,7 +9,7 @@
     <img class="poke-sprite-detail" src="{{ detailsOfPokemon.sprite }}" height="100" width="100" alt="picture {{ pokemon.name }}" >
 </header>
 
-<main>
+<main class="main-detail">
     <section class="about">
         <h2 class="tab-h2">About</h2>
         <dl class="details-grid">
@@ -32,7 +32,7 @@
             <dd> {{ detailsOfPokemon.types | join: " & " | capitalize }} </dd>
 
             <dt>Abilities</dt>
-            <dd> {{ detailsOfPokemon.abilities | join: " & " |  capitalize }} </dd>
+            <dd> {{ detailsOfPokemon.abilities | join: " / " |  capitalize }} </dd>
         </dl>
 
     </section>
