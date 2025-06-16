@@ -63,3 +63,76 @@ a {
     text-decoration: none;
 }
 
+
+/* pokemon MARK: type = kleur */
+.type-grass {
+    background-color: var(--color-pokemon-type-grass);
+}
+
+.type-normal {
+    background-color: var(--color-pokemon-type-normal);
+}
+
+.type-fire {
+    background-color: var(--color-pokemon-type-fire);
+}
+
+.type-water {
+    background-color: var(--color-pokemon-type-water);
+}
+
+.type-flying {
+    background-color: var(--color-pokemon-type-flying);
+}
+
+.type-fighting {
+    background-color: var(--color-pokemon-type-fighting);
+}
+
+.type-poison {
+    background-color: var(--color-pokemon-type-poison);
+}
+
+.type-electric {
+    background-color: var(--color-pokemon-type-electric);
+}
+
+.type-ground {
+    background-color: var(--color-pokemon-type-ground);
+}
+
+.type-rock {
+    background-color: var(--color-pokemon-type-rock);
+}
+
+.type-psychic {
+    background-color: var(--color-pokemon-type-psychic);
+}
+
+.type-ice {
+    background-color: var(--color-pokemon-type-ice);
+}
+
+.type-bug {
+    background-color: var(--color-pokemon-type-bug);
+}
+
+.type-ghost {
+    background-color: var(--color-pokemon-type-ghost);
+}
+
+.type-steel {
+    background-color: var(--color-pokemon-type-steel);
+}
+
+.type-dragon {
+    background-color: var(--color-pokemon-type-dragon);
+}
+
+.type-dark {
+    background-color: var(--color-pokemon-type-dark);
+}
+
+.type-fairy {
+    background-color: var(--color-pokemon-type-fairy);
+}

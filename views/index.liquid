@@ -27,9 +27,10 @@
 <main class="main-index">
     <div class="pokemon-grid">
         {% for pokemon in pokemonDetail %}
-            <a class="pokemon-link" href="/{{ pokemon.name }}">
-                {{ pokemon.name | capitalize }}
-                <img class="pokemon-afbeelding-link" src="{{ pokemon.sprite }}" height="75" width="75" alt="{{ pokemon.name }}" >
+            {% assign type = pokemon.types[0] %}
+            <a class="pokemon-link type-{{ type }}" href="/{{ pokemon.name }}">
+            {{ pokemon.name | capitalize }}
+            <img class="pokemon-afbeelding-link" src="{{ pokemon.sprite }}" height="75" width="75" alt="{{ pokemon.name }}">
             </a>
         {% endfor %}
     </div>

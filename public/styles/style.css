@@ -97,7 +97,11 @@ label:has(input[type="radio"]:checked) {
     padding: 1em;
     border-radius: 1em ;
     position: relative;
-    background-color: pink;
+    /* background-color: pink; */
+    background-image: url(../assets/pokebal.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
 
     a {
         color: var(--color-primary-purple);
@@ -127,7 +131,7 @@ label:has(input[type="radio"]:checked) {
 
 /* MARK: detail */
 .main-detail {
-    width: 80%;
+    width: 100%;
     margin-top: 1em;
 }
 
@@ -151,7 +155,6 @@ label:has(input[type="radio"]:checked) {
 /* de positionering van de dl */
 .details-grid {
         display: grid;
-        grid-template-columns: fit-content 1fr;
         padding: 1.5em;
 }
 

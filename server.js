@@ -35,6 +35,7 @@ app.get("/", async function (req, res) {
             return {
                 name: PokeDetails.name,
                 sprite: PokeDetails.sprites.other.dream_world.front_default,
+                types: PokeDetails.types.map(t => t.type.name),
             }
         })
     )
