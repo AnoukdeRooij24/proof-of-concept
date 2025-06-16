@@ -25,6 +25,34 @@ De instructies voor deze opdracht staan in: [docs/INSTRUCTIONS.md](https://githu
 ## Kenmerken
 <!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framwork of library gebruikt? -->
 
+### Code conventies:
+#### Liquid:
+- In de head roep ik de CSS en JS bestanden aan
+- Ik gebuik 1 tab (4 spaties) om de code in te laten springen
+- Tussen verschillende elementen gebruik ik een witregel om aan te tonen dat het volgende element begint
+- Ik gebruik lowercase (behalve voor de content)
+- Met de W3C HTML validator check ik voor dingen die ik zelf over het hoofd zie
+
+#### CSS:
+- Comments MARK: per pagina
+- Comments per element die uitleggen over wat het gaat
+- Ik gebruik 1 tab (4 spaties) om de code in te laten springen
+- Ik gebruik alstijd 1 spatie tussen de property en de value
+- Ik gebruik lowercase
+- Ik gebruik voor de class names kebab-case (door een exstention kan ik de gehele classname alsnog selecteren met een dubbelklik)
+- Ik gebruik class names die omschrijven waar het over gaat, als de namen teveel op die van een andere pagina lijken zet ik de naam van de pagina erbij.
+- Met de W3C CSS validator check ik voor dingen die ik zelf over het hoofd zie
+- In de stylesheet geef ik de qustom-properties die ik in de style.css aanroep
+- Ik nest media queries in de bijbehorende selecor
+
+#### JavaScript:
+- Ik hou dezelfde volgorde als in Liquid en CSS aan
+- De POST zet ik onder de GET route van de pagina waar die op staat
+- De naamgeving doe ik in camelCase
+- Ik stel de views map in als standaard map
+- Ik geef het port nummer 8000 mee
+- Ik gebruik MARK: per GET/POST en geef de naam van de pagina/functie mee
+
 ## Installatie
 <!-- Bij Instalatie staat hoe een andere developer aan jouw repo kan werken -->
 
