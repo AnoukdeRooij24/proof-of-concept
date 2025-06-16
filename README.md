@@ -37,15 +37,21 @@ De instructies voor deze opdracht staan in: [docs/INSTRUCTIONS.md](https://githu
 - Comments MARK: per pagina
 - Comments per element die uitleggen over wat het gaat
 - Ik gebruik 1 tab (4 spaties) om de code in te laten springen
+- Ik gebruik alstijd 1 spatie tussen de property en de value
 - Ik gebruik lowercase
 - Ik gebruik voor de class names kebab-case (door een exstention kan ik de gehele classname alsnog selecteren met een dubbelklik)
 - Ik gebruik class names die omschrijven waar het over gaat, als de namen teveel op die van een andere pagina lijken zet ik de naam van de pagina erbij.
 - Met de W3C CSS validator check ik voor dingen die ik zelf over het hoofd zie
 - In de stylesheet geef ik de qustom-properties die ik in de style.css aanroep
-- nesten...
+- Ik nest media queries in de bijbehorende selecor
 
 #### JavaScript:
-- 
+- Ik hou dezelfde volgorde als in Liquid en CSS aan
+- De POST zet ik onder de GET route van de pagina waar die op staat
+- De naamgeving doe ik in camelCase
+- Ik stel de views map in als standaard map
+- Ik geef het port nummer 8000 mee
+- Ik gebruik MARK: per GET/POST en geef de naam van de pagina/functie mee
 
 ## Installatie
 <!-- Bij Instalatie staat hoe een andere developer aan jouw repo kan werken -->
