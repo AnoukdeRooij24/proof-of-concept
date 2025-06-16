@@ -72,7 +72,7 @@ label:has(input[type="radio"]:checked) {
 }
 
 /* de layout van de pokemon cards */
-.poke-grid {
+.pokemon-grid {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -90,7 +90,7 @@ label:has(input[type="radio"]:checked) {
 }
 
 /* pokemon card om naar de detail te gaan */
-.poke-link {
+.pokemon-link {
     list-style: none;
     width: 170px;
     height: 140px;
@@ -110,7 +110,7 @@ label:has(input[type="radio"]:checked) {
 }
 
 /* pokemon afbeelding in de poke-link */
-.poke-sprite-home {
+.pokemon-afbeelding-link{
     max-height: 100%;
     object-fit: contain;
     float: right;
