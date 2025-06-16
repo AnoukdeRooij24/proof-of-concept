@@ -15,6 +15,7 @@ header {
     align-items: center;
 }
 
+/* pokemon logo */
 .poke-logo {
     width: 370px;
 }
@@ -54,6 +55,7 @@ label:has(input[type="radio"]:checked) {
     color: #ffff;
 }
 
+/* back to home button - detail */
 .back-button {
     width: fit-content;
     padding: .5em;
@@ -69,9 +71,8 @@ label:has(input[type="radio"]:checked) {
     height: 100%;
 }
 
+/* de layout van de pokemon cards */
 .poke-grid {
-    /* display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr)); */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -85,11 +86,10 @@ label:has(input[type="radio"]:checked) {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-
-        /* grid-template-columns: repeat(auto-fill, minmax(min(170px, 100%), 1fr, 1fr, 1fr)); */
     }
 }
 
+/* pokemon card om naar de detail te gaan */
 .poke-link {
     list-style: none;
     width: 170px;
@@ -106,10 +106,10 @@ label:has(input[type="radio"]:checked) {
     @media (width > 800px) {
         width: 265px;
         height: 220px;    
-        /* transition: .2s; */
     }
 }
 
+/* pokemon afbeelding in de poke-link */
 .poke-sprite-home {
     max-height: 100%;
     object-fit: contain;
@@ -118,21 +118,25 @@ label:has(input[type="radio"]:checked) {
     height: 80px;
     width:80px;
 
-
     @media (width > 800px) {
         height: 130px;
         width: 130px;   
-        /* transition: .2s;  */
     }
 }
 
 
 /* MARK: detail */
+.main-detail {
+    width: 80%;
+    margin-top: 1em;
+}
+
+/* h2 - detail page  */
 .tab-h2 {
     margin-left: 1em;
 }
 
-/* details info */
+/* pokemon afbeelding - detail page */
 .poke-sprite-detail {
     height: 130px;
     width: 130px;
@@ -142,20 +146,16 @@ label:has(input[type="radio"]:checked) {
         height: 250px;   
         transition: .2s; 
     }
-
 }
 
+/* de positionering van de dl */
 .details-grid {
         display: grid;
         grid-template-columns: fit-content 1fr;
         padding: 1.5em;
 }
 
-.main-detail {
-    width: 80%;
-    margin-top: 1em;
-}
-
+/* definition term */
 dt {
     line-height: 2.5;
     padding-inline: 1em;
@@ -168,6 +168,7 @@ dt {
     }
 }
 
+/* definition description */
 dd {
     line-height: 2.5;
     padding-inline: 1em;
