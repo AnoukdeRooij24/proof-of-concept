@@ -2,7 +2,7 @@
 
 <header>
     <a href="/"><img src="/assets/PokemonLogo.svg" class="poke-logo" width="300px"></a> 
-    <a href="/" class="back-button"> ← Back to all pokemon</a> 
+    <a href="/" class="back-button">← Back to all pokemon</a> 
     <h1>{{ detailsOfPokemon.name | capitalize }}</h1>
 
     <h2> {{ detailsOfPokemon.id | prepend: '000' | slice: -3, 3 }} </h2>
@@ -34,7 +34,6 @@
             <dt>Abilities</dt>
             <dd> {{ detailsOfPokemon.abilities | join: " / " |  capitalize }} </dd>
         </dl>
-
     </section>
 
     <section class="stats">
@@ -63,7 +62,6 @@
     <section class="evolutions">
         <h2 class="tab-h2">Evolutions</h2>
     </section>
-
 </main>
 
 <!-- {% render "partials/footer.liquid" %} -->
