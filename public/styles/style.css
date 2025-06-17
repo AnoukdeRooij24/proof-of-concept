@@ -10,7 +10,7 @@ body {
 .header-main {
     display: flex;
     flex-direction: column;
-    gap: 2em;
+    gap: 1em;
     margin-bottom: 1em;
     align-items: center;
 
@@ -139,13 +139,19 @@ label:has(input[type="radio"]:checked) {
 .main-detail {
     width: 100%;
     margin-top: 1em;
+    background-color: #ffff;
+    border-radius: 1em;
+
+    @media (width > 800px) {
+        width: 100%;
+    }
 }
 
 /* header - detail pagina */
 .header-detail {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1em;
     align-items: center;
     height: 739px;
     max-width: 800px;
@@ -170,6 +176,23 @@ label:has(input[type="radio"]:checked) {
         width: 230px;
         height: 230px;   
         transition: .2s; 
+    }
+}
+
+/* hide alle tabjes */
+.tab {
+    display: none;
+}
+
+/* laat degene zien aan de hand van de aangeklikte id */
+.tab:target {
+    display: block;
+}
+
+/* laat standaard de eerste (about) zien, behalve als er een ander id is aangeklikt */
+.main-detail:not(:has(.tab:target)) {
+    .tab:first-of-type {
+        display: block;
     }
 }
 
