@@ -1,6 +1,8 @@
 {% render "partials/head.liquid" %}
 
-<header>
+{% assign type = detailsOfPokemon.types[0] %}
+<header class=" header-detail type-{{ type }}">
+
     <a href="/"><img src="/assets/PokemonLogo.svg" class="poke-logo" width="300px"></a> 
     <a href="/" class="back-button">← Back to all pokemon</a> 
     <h1>{{ detailsOfPokemon.name | capitalize }}</h1>
