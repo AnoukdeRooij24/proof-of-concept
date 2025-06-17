@@ -140,11 +140,6 @@ label:has(input[type="radio"]:checked) {
     width: 100%;
     margin-top: 1em;
     background-color: #ffff;
-    border-radius: 1em;
-
-    @media (width > 800px) {
-        width: 100%;
-    }
 }
 
 /* header - detail pagina */
@@ -153,24 +148,26 @@ label:has(input[type="radio"]:checked) {
     flex-direction: column;
     gap: 1em;
     align-items: center;
-    height: 739px;
+    height: fit-content;
     max-width: 800px;
     background-image: url(../assets/pokebal.svg);
     background-size: 300px ;
     background-repeat: no-repeat;
     background-position: right;
-    /* background-color: pink; */
-}
+    padding-bottom: 2.5em;
+    border-radius: 0 0 1.5em 1.5em;
 
-/* h2 - detail page  */
-.tab-h2 {
-    margin-left: 1em;
+    @media (width > 800px) {
+        height: 730px;   
+        border-radius: 0;
+    }
 }
 
 /* pokemon afbeelding - detail page */
 .pokemon-afbeelding-detail {
     height: 150px;
     width: 150px;
+    margin: 1em;
 
     @media (width > 800px) {
         width: 230px;
@@ -179,9 +176,34 @@ label:has(input[type="radio"]:checked) {
     }
 }
 
+.tab-links {
+    justify-self: center;
+    background-color: #ffff;
+    margin-bottom: .5em;
+    display: flex;
+    gap: 1.5em;
+
+    a {
+        color: black;
+    }
+
+    :hover {
+        color: var(--color-primary-purple);
+        transition: .2s;
+    }
+
+    @media (width > 800px) {
+        gap: 3em;
+        margin: 2em;
+    }
+}
+
 /* hide alle tabjes */
 .tab {
     display: none;
+    height: 355px;
+    border-radius: 1em;
+    background-color: #ffff;
 }
 
 /* laat degene zien aan de hand van de aangeklikte id */
