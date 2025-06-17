@@ -162,13 +162,13 @@ label:has(input[type="radio"]:checked) {
 }
 
 /* pokemon afbeelding - detail page */
-.poke-sprite-detail {
-    height: 130px;
-    width: 130px;
+.pokemon-afbeelding-detail {
+    height: 150px;
+    width: 150px;
 
     @media (width > 800px) {
-        width: 250px;
-        height: 250px;   
+        width: 230px;
+        height: 230px;   
         transition: .2s; 
     }
 }
@@ -188,7 +188,7 @@ dt {
     font-weight: 600;
 
     &:nth-of-type(odd) {
-        background-color: pink;
+        background-color: var(--color-primary-daylight);
     }
 }
 
@@ -203,7 +203,7 @@ dd {
     border-radius: 0 1em 1em 0;
 
     &:nth-of-type(odd) {
-        background-color: pink; 
+        background-color: var(--color-primary-daylight); 
     }
 }
 
