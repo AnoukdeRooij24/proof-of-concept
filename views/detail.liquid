@@ -34,7 +34,7 @@
             <dd> {{ detailsOfPokemon.weight |  divided_by: 10}} K </dd>
 
             <dt>Height</td>
-            <dd> {{ detailsOfPokemon.height }} cm </dd>
+            <dd> {{ detailsOfPokemon.height |  times: 10 }} cm </dd>
 
             <dt>Type</dt>
             <dd> {{ detailsOfPokemon.types | join: " & " | capitalize }} </dd>
