@@ -74,7 +74,8 @@ label:has(input[type="radio"]:checked) {
 /* MARK: index */
 .main-index {
     background-color: var(--color-primary-daylight);
-    min-height: 100%;
+    height: 100vh;
+    width: 100%;
 }
 
 /* de layout van de pokemon cards */
@@ -175,7 +176,7 @@ label:has(input[type="radio"]:checked) {
     border-radius: 0 0 1.5em 1.5em;
 
     @media (width > 800px) {
-        height: 730px;   
+        height: 100vh;   
         border-radius: 0;
     }
 }
