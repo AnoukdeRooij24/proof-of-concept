@@ -90,9 +90,15 @@ app.get("/:name", async function (req, res)  {
 
     // als de pokemon niet gevonden is of er een foutmelding is komt er een 404
     catch (error) {
-        res.status(404).send('Pokémon not found')
+        res.status(404).send('Pokémon not found', error)
     }
-})
+});
+
+// // 404 pagina als je de route niet werkt
+app.use((req, res) => {
+    res.status(404).render("404.liquid", { })
+});
+
 
 // MARK: port
 app.set('port', process.env.PORT || 8000)
