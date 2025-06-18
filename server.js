@@ -48,13 +48,58 @@ app.get("/", async function (req, res) {
 
 });
 
+// MARK: search
 app.get("/search", async function (req, res) {
+    try {
+        // zoekterm ophalen en omzetten naar kleine letters
+        const keyword = req.query.p?.toLowerCase() || "";
 
-    res.render("search.liquid", {
-    });
+        // pokemon naam ophalen van alle 1000 pokemon
+        const pokemonResponse = await fetch(`${pokeApi}pokemon?limit=1000`);
+        const pokemonResponseJSON = await pokemonResponse.json();
 
+        // resultaten filteren zodat alleen de pokemon met een matchende naam blijft
+        const results = pokemonResponseJSON.results.filter(pokemon =>
+            pokemon.name.toLowerCase().includes(keyword)
+        );
+
+        // als hij niks kan vinden komt de 404 pagina (met zoekterm)
+        if (results.length === 0) {
+            return res.render('404.liquid', { p: keyword });
+        }
+
+        // van elke pokemon de detail informatie ophalen
+        const detailedResults = await Promise.all(results.map(async (pokemon) => {
+            try {
+                const detailedResponse = await fetch(pokemon.url);
+                const pokemonDetails = await detailedResponse.json();
+
+                return {
+                    name: pokemonDetails.name,
+                    sprite: pokemonDetails.sprites.other.dream_world.front_default, 
+                    types: pokemonDetails.types.map(t => t.type.name),
+                };
+            } 
+            // als hij niks kan vinden komt de 404 pagina (met zoekterm)
+            catch (error) {
+                return res.render('404.liquid', { p: keyword });
+            }
+        }));
+
+        //  
+        const filteredDetailedResults = detailedResults.filter(p => p !== null);
+
+        // alle informatie uit pokemonDetail laten zien + zoekterm
+        return res.render('index.liquid', {
+            pokemonDetail: filteredDetailedResults,
+            p: keyword
+        });
+    } 
+        // als hij niks kan vinden komt de 404 pagina (met zoekterm)
+        catch (err) {
+        return res.render('404.liquid');
+    }
 });
-
 
 // MARK: detail
 app.get("/:name", async function (req, res)  {
@@ -94,7 +139,7 @@ app.get("/:name", async function (req, res)  {
     }
 });
 
-// // 404 pagina als je de route niet werkt
+// // 404 pagina als de route niet werkt
 app.use((req, res) => {
     res.status(404).render("404.liquid", { })
 });

@@ -4,10 +4,10 @@
     <a href="/"><img src="/assets/PokemonLogo.svg" class="poke-logo" width="300px"></a> 
     <h1>All Pokémon</h1>
 
-    <form method="get" action="" class="search-bar">
-        <input type="search" placeholder="Search">
+    <form method="get" action="/search" class="search-bar">
+        <input type="search" name="p" value="{{ p | escape }}" placeholder="Search" required>
         <button class="search-button">
-            <img class="" src="/assets/Search.svg" width="25" height="25" alt="start searching">
+            <img src="/assets/Search.svg" width="25" height="25" alt="start searching">
         </button>
     </form>
 
