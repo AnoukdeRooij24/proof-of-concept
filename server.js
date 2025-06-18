@@ -13,8 +13,10 @@ app.engine("liquid", engine.express());
 app.set("views", "./views");
 app.use(express.urlencoded({extended: true}))
 
-// Base api link
+// Base api link en post naar directus link
 const pokeApi = "https://pokeapi.co/api/v2/";
+const favoPokemon = 'https://fdnd.directus.app/items/person/169?fields=custom';
+
 
 // MARK: home
 app.get("/", async function (req, res) {
@@ -139,11 +141,59 @@ app.get("/:name", async function (req, res)  {
     }
 });
 
-// // 404 pagina als de route niet werkt
+// MARK: post
+app.post('/:pokemon/catch', async (req, res) => {
+    try {
+      const { pokemon } = req.params;
+  
+      // fetch de huisige data
+      const response = await fetch("https://fdnd.directus.app/items/person/169?fields=custom");
+      const { data = {} } = await response.json();
+      const customData = data.custom ?? {};
+  
+    // zorg dat er een lijst is van gevangen Pokemon
+    let caughtList = [];
+
+    if (Array.isArray(customData.favoPokemon)) {
+    caughtList = customData.favoPokemon;
+    }
+
+    // maak een nieuwe lijst (toggle)
+    let updatedList;
+
+        // als de pokemon al gevangen is, dan release
+        if (caughtList.includes(pokemon)) {
+        // nieuwe lijst excl geklikte pokemon
+        updatedList = caughtList.filter(name => name !== pokemon);
+        } 
+        
+        // als de pokemon niet gevangen is, dan catch 
+        else {
+        // nieuwe lijst incl geklikte pokemon
+        updatedList = [...caughtList, pokemon];
+        }  
+
+    // de post (patch, omdat je een field aanpast en niet toevoegd)
+    await fetch("https://fdnd.directus.app/items/person/169", {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ custom: { favoPokemon: updatedList } })
+    });
+  
+    // redirect naar de pagina waar de gebruiker vandaan kwam
+    res.redirect(303, req.get("Referer") || "/");
+    } 
+
+    catch (error) {
+      console.error("404.liquid", error);
+      res.status(500).send("404.liquid");
+    }
+});
+
+// MARK: 404 
 app.use((req, res) => {
     res.status(404).render("404.liquid", { })
 });
-
 
 // MARK: port
 app.set('port', process.env.PORT || 8000)

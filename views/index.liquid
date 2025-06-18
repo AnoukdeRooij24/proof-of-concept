@@ -29,10 +29,15 @@
             {% for pokemon in pokemonDetail %}
                 {% assign type = pokemon.types[0] %}
                 <a class="pokemon-link type-{{ type }}" href="/{{ pokemon.name }}">
-                {{ pokemon.name | capitalize }}
-                <img class="pokemon-afbeelding-link" src="{{ pokemon.sprite }}" height="75" width="75" alt="{{ pokemon.name }}">
+                    {{ pokemon.name | capitalize }}
+                    <img class="pokemon-afbeelding-link" src="{{ pokemon.sprite }}" height="75" width="75" alt="{{ pokemon.name }}">
                 </a>
-            {% endfor %}
+                <form method="POST" action="/{{ pokemon.name }}/catch">
+                <input type="hidden" name="origin" value="{{ p | default: 'search' }}">
+                <button type="submit">
+                    <img src="/assets/caughtPokemon.svg" alt="Catch {{ pokemon.name }}">
+                </button>
+            </form>            {% endfor %}
         </div>
         <button class="load-more">Load more</button>
 </main>
