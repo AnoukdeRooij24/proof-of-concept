@@ -48,6 +48,14 @@ app.get("/", async function (req, res) {
 
 });
 
+app.get("/search", async function (req, res) {
+
+    res.render("search.liquid", {
+    });
+
+});
+
+
 // MARK: detail
 app.get("/:name", async function (req, res)  {
     const name = req.params.name.toLowerCase();
