@@ -231,6 +231,11 @@ dt {
     grid-column: 1 / 2;
     border-radius: 1em 0 0 1em;
     font-weight: 600;
+    
+    @media (width > 800px) {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
 
     &:nth-of-type(odd) {
         background-color: var(--color-primary-daylight);
@@ -246,6 +251,11 @@ dd {
     text-align: end;
     width: 100%;
     border-radius: 0 1em 1em 0;
+
+    @media (width > 800px) {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
 
     &:nth-of-type(odd) {
         background-color: var(--color-primary-daylight); 

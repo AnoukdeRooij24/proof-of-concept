@@ -13,12 +13,12 @@
 
 <main class="main-detail">
     <nav class="tab-links">
-        <a href="#about">About</a>
-        <a href="#stats">Stats</a>
-        <a href="#evolutions">Evolutions</a>
+        <a id="about-link" href="#about">About</a>
+        <a id="stats-link" href="#stats">Stats</a>
+        <a id="evolutions-link" href="#evolutions">Evolutions</a>
     </nav>
 
-    <section class="tab" id="about">
+    <section aria-describedby="about-link" class="tab" id="about">
        <!-- <h2>About</h2> ik wil deze niet toonbaar hebben, maar wel toegankelijk voor screenreaders -->
         <dl class="details-grid">
             <dt>Name</dt>
@@ -31,7 +31,7 @@
             <dd> {{ detailsOfPokemon.xp }} xp </dd>
 
             <dt>Weight</dt>
-            <dd> {{ detailsOfPokemon.weight |  divided_by: 10}} K </dd>
+            <dd> {{ detailsOfPokemon.weight |  divided_by: 10}} Kg </dd>
 
             <dt>Height</td>
             <dd> {{ detailsOfPokemon.height |  times: 10 }} cm </dd>
@@ -44,7 +44,7 @@
         </dl>
     </section>
 
-    <section class="tab" id="stats">
+    <section aria-describedby="stats-link" class="tab" id="stats">
         <!-- <h2>Stats</h2> -->
         <dl class="details-grid">
             <dt>HP</dt>
@@ -67,7 +67,7 @@
         </dl>
     </section>
 
-    <section class="tab" id="evolutions">
+    <section aria-describedby="evolutions-link" class="tab" id="evolutions">
         <!-- <h2>Evolutions</h2> -->
     </section>
 </main>
