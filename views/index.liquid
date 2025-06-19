@@ -35,7 +35,7 @@
                 <form class="catch-pokemon" data-enhanced="true" method="POST" action="/{{ pokemon.name }}/catch">
                     <input type="hidden" name="origin" value="{{ p | default: 'search' }}">
                     <button class="submit-button" type="submit">
-                        <img src="/assets/pokebal-black.svg" alt="Catch {{ pokemon.name }}">
+                        <img class="pokemon-catch-img" src="/assets/pokebal-black.svg" alt="Catch {{ pokemon.name }}">
                     </button>
                 </form>            
             </a>

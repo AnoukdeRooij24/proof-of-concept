@@ -68,7 +68,20 @@
     </section>
 
     <section aria-describedby="evolutions-link" class="tab" id="evolutions">
-        <!-- <h2>Evolutions</h2> -->
+        {% if evolutions.size > 0 %}
+            <ul class="evolution-list">
+              {% for evo in evolutions %}
+                <li class="evolution-item">
+                  <a href="/{{ evo.name | escape }}">
+                    <img src="{{ evo.sprite }}" alt="{{ evo.name }}" width="80" height="80">
+                    <p>{{ evo.name | capitalize }}</p>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <p>No evolutions found.</p>
+          {% endif %}
     </section>
 </main>
 
