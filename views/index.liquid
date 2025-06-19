@@ -32,9 +32,9 @@
                 {{ pokemon.name | capitalize }}
                 <img class="pokemon-afbeelding-link" src="{{ pokemon.sprite }}" height="75" width="75" alt="{{ pokemon.name }}">
                 
-                <form class="catch-pokemon" method="POST" action="/{{ pokemon.name }}/catch">
+                <form class="catch-pokemon" data-enhanced="true" method="POST" action="/{{ pokemon.name }}/catch">
                     <input type="hidden" name="origin" value="{{ p | default: 'search' }}">
-                    <button type="submit">
+                    <button class="submit-button" type="submit">
                         <img src="/assets/pokebal-black.svg" alt="Catch {{ pokemon.name }}">
                     </button>
                 </form>            
@@ -44,3 +44,61 @@
     <button class="load-more">Load more</button>
 </main>
 <!-- {% render "partials/footer.liquid" %} -->
+
+<script type="module">
+  document.addEventListener('submit', async function (event) {
+    const form = event.target;
+
+    // alleen enhanced formulier opzoeken
+    if (!form.hasAttribute('data-enhanced')) return;
+
+    // voorkom default browser submit
+    event.preventDefault(); 
+
+    // evt naam en waarde meegeven
+    const formData = new FormData(form);
+    if (event.submitter) {
+      formData.append(event.submitter.name, event.submitter.value);
+    }
+
+    // zoek de button en geef de loading class mee
+    const submitButton = form.querySelector('.submit-button');
+    if (submitButton) {
+      submitButton.classList.add('loading');
+    }
+
+    // fetch naar de server, net als hoe de browser dit normaal zou doen
+    // gebruik daarvoor het action en method attribuut van het originele formulier incl alle formuliervelden
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: new URLSearchParams(formData),
+      });
+
+    // parse de nieuwe HTML en maak hiervan een nieuw Document Object Model in het geheugen
+      const responseText = await response.text();
+      const parser = new DOMParser();
+      const responseDOM = parser.parseFromString(responseText, 'text/html');
+
+      // zoek nieuwe HTML (zelfde data-enhanced attribuut)
+      const newState = responseDOM.querySelector(`[data-enhanced="${form.getAttribute('data-enhanced')}"]`);
+
+      if (newState) {
+        // geef success feedback 
+        if (submitButton) {
+          submitButton.classList.remove('loading');
+          submitButton.classList.add('success');
+        }
+
+        // wacht 400ms voordat we het formulier vervangen
+        setTimeout(() => {
+            form.outerHTML = newState.outerHTML;
+        }, 400);
+        }
+    } catch (error) {
+      console.error("Something went wrong while sending the form:", error);
+    }
+  });
+</script>
+
+
