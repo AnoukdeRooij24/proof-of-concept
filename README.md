@@ -1,9 +1,10 @@
-Ontwerp en maak een data driven online concept voor een opdrachtgever
+<!-- Ontwerp en maak een data driven online concept voor een opdrachtgever
 
-De instructies voor deze opdracht staan in: [docs/INSTRUCTIONS.md](https://github.com/fdnd-task/proof-of-concept/blob/main/docs/INSTRUCTIONS.md)
+De instructies voor deze opdracht staan in: [docs/INSTRUCTIONS.md](https://github.com/fdnd-task/proof-of-concept/blob/main/docs/INSTRUCTIONS.md) -->
 
-# Titel
+# PokeApp
 <!-- Geef je project een titel en schrijf in één zin wat het is -->
+![image](https://github.com/user-attachments/assets/a1140b56-8d64-4331-9915-6901cb3511e0)
 
 ## Inhoudsopgave
 
@@ -18,6 +19,10 @@ De instructies voor deze opdracht staan in: [docs/INSTRUCTIONS.md](https://githu
 <!-- Bij Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
 <!-- Voeg een mooie poster visual toe 📸 -->
 <!-- Voeg een link toe naar Github Pages 🌐-->
+
+Ik heb een Pokedex gemaakt waarop je informatie van pokemon kan vinden. Hier kan je op een pokemon zoeken, je kan een pokemon opslaan en je kan de informatie vinden. 
+De informatie die te vinden is van de pokemon gaat over de pokemon zelf, de stats en de evolutions.
+Zie [hier](https://proof-of-concept-nlhk.onrender.com/) de live site.
 
 ## Gebruik
 <!-- Bij Gebruik staat de user story, hoe het werkt en wat je er mee kan. -->
