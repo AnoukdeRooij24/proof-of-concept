@@ -167,6 +167,7 @@ label:has(input[type="radio"]:checked) {
 
 .load-more{
     background-color: var(--color-primary-purple);
+    color: #ffff;
     padding: 1em;
     border-radius: 1em;
     position: fixed;
@@ -174,13 +175,20 @@ label:has(input[type="radio"]:checked) {
     left: 50%;
     transform: translate(-50%);
     border: none;
+    font-weight: bolder;
+
+    &:hover {
+        transition: .2s;
+        color: var(--color-primary-purple);
+        border: solid 1px var(--color-primary-purple);
+        background-color: var(--color-primary-daylight);
+    }
 
     @media (width > 800px) {
         bottom: 2em;
         left: 64%;
         transform: translate(-64%);  
     }
-
 }
 
 /* MARK: detail */
