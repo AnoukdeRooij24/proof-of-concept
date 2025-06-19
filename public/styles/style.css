@@ -34,9 +34,29 @@ body {
     width: 100%;
     max-width: 400px;
     height: 3rem;
-    padding: 1em;
+    padding: 1em 0 1em 1em;
     border-radius: 1em;
     background-color: var(--color-primary-daylight);
+
+    input {
+        appearance: none;
+        border: none;
+        height: inherit;
+        width: inherit;
+        background-color: inherit;
+        padding: .5em;
+    }
+
+    button {
+        appearance: none;
+        border: none;
+        float: right;
+        height: inherit;
+        width: 6em;
+        padding-right: 0;
+        border-radius: 0 1em 1em 0;
+        background-color: inherit;   
+    }
 }
 
 /* pokemon sort */
