@@ -56,6 +56,22 @@ De informatie die te vinden is van de pokemon gaat over de pokemon zelf, de stat
 ## Kenmerken
 <!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framwork of library gebruikt? -->
 
+### Ontwerpkeuzes
+#### Mobile first
+Ik heb het gekregen figma design gevolgd, die kregen we met creatieve vrijheid voor de animaties op de website. 
+De website is mobile first opgezet, dit betekend dat er eerst voor heb gezorgd dat alle informatie op de website staat zonder ook maar enige styling. Daarna ben ik dit gaan uitbreiden naar een mobile versie. Vanuit daar heb ik de desktop versie gemaakt. Om zo te zorgen dat de website op het kleinste scherm altijd optimaal werkt. 
+Ik heb dit gedaan door alle afmetingen voor mobiel in css mee te geven en met een @media gezegd dat het scherm boven de 800px een andere layout krijgt. Ik heb dit punt gekozen omdat het scherm anders nog te smal was voor de sidebar en pokemon cards naast elkaar.
+https://github.com/AnoukdeRooij24/proof-of-concept/blob/5e9de7063de3449ce7702d7cde0041b5964a7ecd/public/styles/style.css#L133-L137
+
+#### De search 
+De opdrachtgever wilde graag een volledig werkende zoek functie. Ik heb in comments in de code uitgelegd hoe ik dit heb gedaan.
+https://github.com/AnoukdeRooij24/proof-of-concept/blob/5e9de7063de3449ce7702d7cde0041b5964a7ecd/server.js#L54-L105
+
+#### Catch een pokemon
+Je moet je favoriete pokemon kunnen vangen op de website. Dit heb ik met een `patch` naar het custom field onder mijn naam in de database van de squadpage gedaan. Verder heb ik met comments in de code uitgelegd hoe ik dit heb gedaan.
+https://github.com/AnoukdeRooij24/proof-of-concept/blob/5e9de7063de3449ce7702d7cde0041b5964a7ecd/server.js#L179-L227
+
+
 ### Code conventies:
 #### Liquid:
 - In de head roep ik de CSS en JS bestanden aan
@@ -105,6 +121,12 @@ Voer vervolgens npm start uit om de server te starten.
 Ga in je browser naar http://localhost:8000 om het project te bekijken.
 
 ## Bronnen
+- https://pokeapi.co/
+- https://github.com/PokeAPI/pokedex-promise-v2?tab=readme-ov-file#pokemon
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dl
+- https://www.phpfreakz.nl/htmlcss/altcodes/
+- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby
+- https://liquidjs.com/filters/join.html
 
 ## Licentie
 
