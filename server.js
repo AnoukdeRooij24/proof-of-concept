@@ -28,6 +28,7 @@ app.get("/", async function (req, res) {
     // van alle pokemon die hierboven aangeroepen zijn de Sprites (afbeeldingen) ophalen 
     // wacht tot alles is opgehaald en rendert alles tegelijk liquid in
     const pokeSprites = await Promise.all(
+        // met map een nieuwe array in de oorspronkelijke array aanmaken die aangepast kan worden
         pokeResponseJSON.results.map(async (pokemon) => {
             const PokeDetailsResponse = await fetch(pokemon.url)
             // console.log(pokemon.url)
@@ -108,41 +109,47 @@ app.get("/:name", async function (req, res) {
     const name = req.params.name.toLowerCase();
   
     try {
-      // pokémon details ophalen
-      const detailRes = await fetch(`${pokeApi}/pokemon/${name}`);
-      if (!detailRes.ok) throw new Error("Not found");
-      const detailData = await detailRes.json();
-  
-      // species info om aan evolution_chain te komen ophalen
-      const speciesRes = await fetch(detailData.species.url);
-      if (!speciesRes.ok) throw new Error("Species not found");
-      const speciesData = await speciesRes.json();
-  
-      // evolution chain data ophalen
-      const evoRes = await fetch(speciesData.evolution_chain.url);
-      if (!evoRes.ok) throw new Error("Evolution chain not found");
-      const evoData = await evoRes.json();
-  
-      // van de evoluties de naam + sprite via API verzamelen
-      const evolutions = [];
-      const evolutionChain = async (node) => {
-        const spName = node.species.name;
-        // haal sprite voor deze soort op
-        const pokeRes = await fetch(`${pokeApi}pokemon/${spName}`);
-        const pokeJ = await pokeRes.json();
-  
-        evolutions.push({
-          name: spName,
-          sprite: pokeJ.sprites.other.dream_world.front_default
-        });
-  
-        for (const next of node.evolves_to) {
-          await evolutionChain(next);
-        }
-      };
+        // pokémon details ophalen
+        const detailRes = await fetch(`${pokeApi}/pokemon/${name}`);
+        // throw om de error message door te geven als de informatie niet gevonden kan worden    
+        if (!detailRes.ok) throw new Error("Not found");
+        const detailData = await detailRes.json();
+
+        // species info om aan evolution_chain te komen ophalen
+        const speciesRes = await fetch(detailData.species.url);
+        if (!speciesRes.ok) throw new Error("Species not found");
+        const speciesData = await speciesRes.json();
+
+        // evolution chain data ophalen
+        const evoRes = await fetch(speciesData.evolution_chain.url);
+        if (!evoRes.ok) throw new Error("Evolution chain not found");
+        const evoData = await evoRes.json();
+
+        // van de evoluties de naam + sprite via API verzamelen
+        // 	Lege array om evoluties op te slaan
+        const evolutions = [];
+        // Async functie om een keten te doorlopen
+        const evolutionChain = async (node) => {
+            // naam van de nodige evolutie ophalen
+            const spName = node.species.name;
+            // haal sprite en overige informatie voor deze soort op
+            const pokeRes = await fetch(`${pokeApi}pokemon/${spName}`);
+            const pokeJ = await pokeRes.json();
+    
+            // Voeg de naam en de sprite-URL toe aan de evolutions-array
+            evolutions.push({
+            name: spName,
+            sprite: pokeJ.sprites.other.dream_world.front_default
+            });
+    
+            // als er meerdere evoluties zijn, doe hier het zelfde mee
+            for (const next of node.evolves_to) {
+            await evolutionChain(next);
+            }
+        };
       await evolutionChain(evoData.chain);
   
-      //  pagina met alle data renderen
+      //  alle data renderen
       res.render("detail.liquid", {
         detailsOfPokemon: {
           name: detailData.name,
@@ -169,76 +176,6 @@ app.get("/:name", async function (req, res) {
     }
   });
 
-// app.get("/:name", async function (req, res)  {
-//     const name = req.params.name.toLowerCase();
-//     // .toLowerCase() achter zetten, database kan gevoelig zijn voor hoofdletters en dit kan fouten opleveren
-
-//     let pokemonSpeciesData = await fetch(`${pokeApi}pokemon-species/${pokemon.name}`);
-//     if (pokemonSpeciesData.status == 404) { return {} };
-
-//     let pokemonSpeciesDataJSON = await pokemonSpeciesData.json();
-//     let pokemonEvolutionChainURL = pokemonSpeciesDataJSON.evolution_chain.url;
-//     let evolutionChainData = await fetch(pokemonEvolutionChainURL);
-
-//     return await evolutionChainData.json();
-//     let evolutionDetails = [];
-
-//     // stage 0
-//     let pokemon = allPokemon.find((pokemon) => pokemon.data.speciesName == evolutionData.chain.species.name);
-//     pokemon.evolutions = [];
-//     evolutionDetails.push(pokemon);
-  
-//     // stage 1
-//     let stageOneArray = evolutionData.chain.evolves_to;
-//     stageOneArray.forEach((evolution) => {
-//       let pokemon = allPokemon.find((pokemon) => pokemon.data.speciesName == evolution.species.name);
-//       pokemon.evolutions = evolution.evolves_to;
-//       evolutionDetails.push(pokemon);
-//     });
-  
-//     // stage 2
-//     evolutionDetails.forEach((pokemon) => {
-//       if (pokemon.evolutions.length > 0) {
-//         pokemon.evolutions.forEach((evolution) => {
-//           let pokemon = allPokemon.find((pokemon) => pokemon.data.speciesName == evolution.species.name);
-//           evolutionDetails.push(pokemon);
-//         })
-//       }
-//     });
-
-//     try {
-//         // op basis van de naam de data ophalen van de pokemon
-//         const detailResponse = await fetch(`${pokeApi}/pokemon/${name}`);
-//         const detailData = await detailResponse.json();
-
-//         res.render("detail.liquid", {
-//             detailsOfPokemon: {
-//                 // about
-//                 name: detailData.name,
-//                 id: detailData.id,
-//                 xp: detailData.base_experience,
-//                 sprite: detailData.sprites.other.dream_world.front_default,
-//                 height: detailData.height,
-//                 weight: detailData.weight,
-//                 types: detailData.types.map(t => t.type.name),
-//                 abilities: detailData.abilities.map(a => a.ability.name),
-//                 // states
-//                 hp: detailData.stats[0].base_stat,
-//                 attack: detailData.stats[1].base_stat,
-//                 defense: detailData.stats[2].base_stat,
-//                 specialAttack: detailData.stats[3].base_stat,
-//                 specialDefense: detailData.stats[4].base_stat,
-//                 speed: detailData.stats[5].base_stat,
-//             }
-//         })
-//     } 
-
-//     // als de pokemon niet gevonden is of er een foutmelding is komt er een 404
-//     catch (error) {
-//         res.status(404).send('Pokémon not found', error)
-//     }
-// });
-
 // MARK: post
 app.post('/:pokemon/catch', async (req, res) => {
     try {
@@ -252,6 +189,7 @@ app.post('/:pokemon/catch', async (req, res) => {
     // zorg dat er een lijst is van gevangen Pokemon
     let caughtList = [];
 
+    // check of er een array is, zo ja voeg de pokemon toe
     if (Array.isArray(customData.favoPokemon)) {
     caughtList = customData.favoPokemon;
     }
